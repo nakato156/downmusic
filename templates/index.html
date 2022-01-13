@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Down Music</title>
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/index.css')}}">
+</head>
+<body>
+    <nav>
+        <h1>Down Music</h1>
+        <ul class="sections">
+            <li onclick="window.location.href='/api'"><a href="/api">Api</a></li>
+        </ul>
+    </nav>
+    <section class="search">
+        <form id="form">
+            <div class="search_bar">
+                <input id="searchMusic" type="text">
+                <div class="icon_search">
+                    <i id="icon_search" class='bx bx-search-alt'></i>
+                </div>
+            </div>
+        </form>
+    </section>
+    <section class="download">
+        <div id="loader" style="display:none;"></div>
+        <i id="icon_download" class='bx bx-download'></i>
+    </section>
+</body>
+<script src="{{url_for('static', filename='js/index.js')}}"></script>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Api Down Music</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/prism.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/api.css')}}">
+</head>
+<body>
+    <nav>
+        <h4>Api Down Music</h4>
+    </nav>
+    <section class="info">
+        <p>Aparte de ser una web de descarga de música practica y segura también proveemos una api pública para que cualquiera pueda usarlo sin costo alguno.</p>
+        <p>A continuación se muestra un ejemplo de uso con JavaScript, en el cual se realiza un petición get a la ruta indicada. El tipo de devolución es un archivo mp3 y debe ser procesado de la forma en que usted crea conveniente.</p>
+    </section>
+    <section class="use">
+        <pre>
+            <code class="lang-javascript" style="white-space:pre-wrap;">
+                GET /downmusic/api/v1/download/videoID
+            </code>
+        </pre>
+        <pre>
+            <code class="lang-javascript" style="white-space:pre-wrap;">
+                fetch(`http://donwmusic/api/v1/download/${video_id}`)
+                .then(res=>{
+                    if(res.status===200){
+                        return res.blob()
+                    }
+                    throw "Not found video"
+                })
+                .then(music=>{
+                    downloadBlob(music)
+                })
+                .catch(err=>console.log(err))
+            </code>
+        </pre>
+    </section>   
+    
+</body>
+<script src="{{url_for('static',filename='js/prism.js')}}"></script>  
+</html>

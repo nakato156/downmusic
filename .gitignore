@@ -1,0 +1,4 @@
+.vscode
+/env/
+api/downloads
+__pycache__
