@@ -31,19 +31,29 @@ function preLoad(){
     loader.setAttribute("class", "preloader")
 }
 
+function IdFromUrl(url){
+    if(/https:\/\/(www.)?youtube.com\/*/g.test(url)){
+        n = url.indexOf("=")+1
+        return url.slice(n);
+    }else if(/https:\/\/(www.)?youtu.be\/*/g.test(url)){
+        return url.split("/").slice(-1)
+    }
+    return false;
+}
+
 function downMusic(e){
     e.preventDefault()
     let video_id = document.getElementById("searchMusic").value
     if(!video_id.trim()){
         alert("Introduzca una url o ID de video")
-        return
+        return;
     }
-    else if(/https:\/\/w{3}?.youtube.com\/*/g.test(video_id)){
-        n = video_id.indexOf("=")+1
-        video_id = video_id.slice(n)
+    video_id = IdFromUrl(video_id)
+    if(!video_id){
+        return;
     }
 
-    fetch(`https://downmusic.herokuapp.com//api/v1/download/${video_id}`)
+    fetch(`https://downmusic.herokuapp.com/api/v1/download/${video_id}`)
     .then(res=>{
         if(res.status===200){
             return res.blob()
